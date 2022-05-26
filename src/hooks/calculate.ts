@@ -9,12 +9,15 @@ export const calculate = (button: string, state: State): State => {
   }
   //.の場合
   if (isDotButton(button)) {
+    return handleDotButton(button, state);
   }
   //削除の場合
   if (isDeleteButton(button)) {
+    return handleDeleteButton(button, state);
   }
   //ACの場合
   if (isAllClearButton(button)) {
+    return handleAllClearButton(state);
   }
   //=の場合
   if (isEqualButton(button)) {
@@ -79,17 +82,52 @@ const handleOperatorButton = (button: string, state: State): State => {
   };
 };
 const isDotButton = (button: string) => {
-  throw new Error("Function not implemented.");
+  return button === ".";
 };
 
+const handleDotButton = (button: string, state: State): State => {
+  if (state.current.indexOf(".") !== -1) {
+    return state;
+  }
+  return {
+    current: `${state.current}.`,
+    operand: state.operand,
+    operator: button,
+    isNextClear: false,
+  };
+};
 const isDeleteButton = (button: string) => {
-  throw new Error("Function not implemented.");
+  return button === "D";
 };
 
+const handleDeleteButton = (button: string, state: State): State => {
+  if (state.current.length === 1) {
+    return {
+      current: "0",
+      operand: state.operand,
+      operator: button,
+      isNextClear: false,
+    };
+  }
+  return {
+    current: state.current.substring(0, state.current.length - 1),
+    operand: state.operand,
+    operator: button,
+    isNextClear: false,
+  };
+};
 const isAllClearButton = (button: string) => {
-  throw new Error("Function not implemented.");
+  return button === "AC";
 };
 
+const handleAllClearButton = (state: State): State => {
+  return {
+    current: "0",
+    operand: 0,
+    operator: null,
+    isNextClear: false,
+  };
+};
 const isEqualButton = (button: string) => {
   throw new Error("Function not implemented.");
 };

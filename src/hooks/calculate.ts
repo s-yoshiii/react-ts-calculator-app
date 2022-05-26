@@ -5,6 +5,7 @@ export const calculate = (button: string, state: State): State => {
   }
   //+-の場合
   if (isOperatorButton(button)) {
+    return handleOperatorButton(button, state);
   }
   //.の場合
   if (isDotButton(button)) {
@@ -57,9 +58,26 @@ const handleNumberButton = (button: string, state: State): State => {
   };
 };
 const isOperatorButton = (button: string) => {
-  throw new Error("Function not implemented.");
+  return button === "+" || button === "-";
 };
 
+const handleOperatorButton = (button: string, state: State): State => {
+  if (state.operator === null) {
+    return {
+      current: state.current,
+      operand: parseFloat(state.current),
+      operator: button,
+      isNextClear: true,
+    };
+  }
+  const nextValue = operate(state);
+  return {
+    current: `${nextValue}`,
+    operand: nextValue,
+    operator: button,
+    isNextClear: true,
+  };
+};
 const isDotButton = (button: string) => {
   throw new Error("Function not implemented.");
 };

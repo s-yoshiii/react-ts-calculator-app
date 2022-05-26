@@ -17,11 +17,11 @@ export const calculate = (button: string, state: State): State => {
   }
   //ACの場合
   if (isAllClearButton(button)) {
-    return handleAllClearButton(state);
+    return handleAllClearButton();
   }
   //=の場合
   if (isEqualButton(button)) {
-    return handleEqualButton(button, state);
+    return handleEqualButton(state);
   }
   return state;
 };
@@ -46,6 +46,14 @@ const isNumberButton = (button: string) => {
   );
 };
 const handleNumberButton = (button: string, state: State): State => {
+  if (state.isNextClear) {
+    return {
+      current: button,
+      operand: state.operand,
+      operator: state.operator,
+      isNextClear: false,
+    };
+  }
   if (state.current === "0") {
     return {
       current: button,
@@ -121,7 +129,7 @@ const isAllClearButton = (button: string) => {
   return button === "AC";
 };
 
-const handleAllClearButton = (state: State): State => {
+const handleAllClearButton = (): State => {
   return {
     current: "0",
     operand: 0,
@@ -132,9 +140,25 @@ const handleAllClearButton = (state: State): State => {
 const isEqualButton = (button: string) => {
   return button === "=";
 };
-const handleEqualButton = (button: string, state: State): State => {
-  throw new Error("Function not implemented.");
+const handleEqualButton = (state: State): State => {
+  if (state.operand === null) {
+    return state;
+  }
+  const nextValue = operate(state);
+  return {
+    current: `${nextValue}`,
+    operand: 0,
+    operator: null,
+    isNextClear: true,
+  };
 };
-const operate = (state: State) => {
-  throw new Error("Function not implemented.");
+const operate = (state: State): number => {
+  const current = parseFloat(state.current);
+  if (state.operator === "+") {
+    return state.operand + current;
+  }
+  if (state.operator === "-") {
+    return state.operand - current;
+  }
+  return current;
 };

@@ -3,7 +3,9 @@ import "./css/style.scss";
 function App() {
   return (
     <div className="content">
-      <Calculator />
+      <div className="content__inner">
+        <Calculator />
+      </div>
     </div>
   );
 }

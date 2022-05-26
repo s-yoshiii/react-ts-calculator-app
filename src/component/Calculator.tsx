@@ -16,7 +16,7 @@ const Calculator = () => {
   };
   return (
     <>
-      <Display />
+      <Display value={state.current} />
       <ButtonPanel buttonHandler={buttonHandler} />
     </>
   );

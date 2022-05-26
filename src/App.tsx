@@ -1,8 +1,8 @@
-import Calculator from './component/Calculator';
-import './css/style.scss'
+import Calculator from "./component/Calculator";
+import "./css/style.scss";
 function App() {
   return (
-    <div>
+    <div className="content">
       <Calculator />
     </div>
   );

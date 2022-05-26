@@ -15,11 +15,10 @@ const Calculator = () => {
     setState(nextState);
   };
   return (
-    <div>
+    <>
       <Display />
       <ButtonPanel buttonHandler={buttonHandler} />
-      Calculator
-    </div>
+    </>
   );
 };
 

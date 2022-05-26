@@ -18,7 +18,7 @@ const ButtonPanel: FC<Props> = (props) => {
       <button onClick={() => buttonHandler("0")}>0</button>
       <button onClick={() => buttonHandler(".")}>.</button>
       <button onClick={() => buttonHandler("AC")}>AC</button>
-      <button onClick={() => buttonHandler("D")}>AC</button>
+      <button onClick={() => buttonHandler("D")}>D</button>
       <button onClick={() => buttonHandler("+")}>+</button>
       <button onClick={() => buttonHandler("-")}>-</button>
       <button onClick={() => buttonHandler("=")}>=</button>

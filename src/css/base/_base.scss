@@ -1,0 +1,69 @@
+@use "../global/" as global;
+html {
+  font-size: 62.5%;
+}
+html,
+body {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+body {
+  font-size: 14px;
+  font-weight: 300;
+  color: #000;
+  background-color: #fff;
+  position: relative;
+  line-height: 2;
+  min-height: 100vh;
+  height: auto;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+  word-break: break-all;
+  -webkit-text-orientation: sideways;
+  text-orientation: sideways;
+  position: relative;
+  transition: opacity 0.2s ease;
+  overflow-x: hidden;
+  a {
+    color: #000;
+    outline: 0;
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 0.3;
+    }
+  }
+}
+main {
+  display: block;
+}
+* {
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+pre {
+  white-space: pre-wrap;
+}
+nav ul {
+  list-style: none;
+}
+strong {
+  font-weight: 700;
+}
+img {
+  vertical-align: bottom;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

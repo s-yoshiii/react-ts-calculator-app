@@ -21,6 +21,7 @@ export const calculate = (button: string, state: State): State => {
   }
   //=の場合
   if (isEqualButton(button)) {
+    return handleEqualButton(button, state);
   }
   return state;
 };
@@ -129,5 +130,11 @@ const handleAllClearButton = (state: State): State => {
   };
 };
 const isEqualButton = (button: string) => {
+  return button === "=";
+};
+const handleEqualButton = (button: string, state: State): State => {
+  throw new Error("Function not implemented.");
+};
+const operate = (state: State) => {
   throw new Error("Function not implemented.");
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { calculate, State } from "../hooks/calculate";
+import { ButtonCode, calculate, State } from "../hooks/calculate";
 import ButtonPanel from "./ButtonPanel";
 import Display from "./Display";
 
@@ -10,7 +10,7 @@ const Calculator = () => {
     operator: null,
     isNextClear: false,
   });
-  const buttonHandler = (code: string) => {
+  const buttonHandler = (code: ButtonCode) => {
     const nextState = calculate(code, state);
     setState(nextState);
   };

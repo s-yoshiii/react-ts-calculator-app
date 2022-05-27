@@ -1,4 +1,24 @@
-export const calculate = (button: string, state: State): State => {
+export type Operator = "+" | "-";
+export type NumberCode =
+  | "0"
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9";
+export type ButtonCode = NumberCode | Operator | "." | "D" | "AC" | "=";
+export interface State {
+  current: string;
+  operand: number;
+  operator: string | null;
+  isNextClear: boolean;
+}
+
+export const calculate = (button: ButtonCode, state: State): State => {
   //数字の場合
   if (isNumberButton(button)) {
     return handleNumberButton(button, state);
@@ -25,13 +45,8 @@ export const calculate = (button: string, state: State): State => {
   }
   return state;
 };
-export interface State {
-  current: string;
-  operand: number;
-  operator: string | null;
-  isNextClear: boolean;
-}
-const isNumberButton = (button: string) => {
+
+const isNumberButton = (button: ButtonCode): button is NumberCode => {
   return (
     button === "0" ||
     button === "1" ||
@@ -45,7 +60,7 @@ const isNumberButton = (button: string) => {
     button === "9"
   );
 };
-const handleNumberButton = (button: string, state: State): State => {
+const handleNumberButton = (button: ButtonCode, state: State): State => {
   if (state.isNextClear) {
     return {
       current: button,
@@ -69,11 +84,11 @@ const handleNumberButton = (button: string, state: State): State => {
     isNextClear: false,
   };
 };
-const isOperatorButton = (button: string) => {
+const isOperatorButton = (button: ButtonCode): button is Operator => {
   return button === "+" || button === "-";
 };
 
-const handleOperatorButton = (button: string, state: State): State => {
+const handleOperatorButton = (button: ButtonCode, state: State): State => {
   if (state.operator === null) {
     return {
       current: state.current,
@@ -90,11 +105,11 @@ const handleOperatorButton = (button: string, state: State): State => {
     isNextClear: true,
   };
 };
-const isDotButton = (button: string) => {
+const isDotButton = (button: ButtonCode) => {
   return button === ".";
 };
 
-const handleDotButton = (button: string, state: State): State => {
+const handleDotButton = (button: ButtonCode, state: State): State => {
   if (state.current.indexOf(".") !== -1) {
     return state;
   }
@@ -105,11 +120,11 @@ const handleDotButton = (button: string, state: State): State => {
     isNextClear: false,
   };
 };
-const isDeleteButton = (button: string) => {
+const isDeleteButton = (button: ButtonCode) => {
   return button === "D";
 };
 
-const handleDeleteButton = (button: string, state: State): State => {
+const handleDeleteButton = (button: ButtonCode, state: State): State => {
   if (state.current.length === 1) {
     return {
       current: "0",
@@ -125,7 +140,7 @@ const handleDeleteButton = (button: string, state: State): State => {
     isNextClear: false,
   };
 };
-const isAllClearButton = (button: string) => {
+const isAllClearButton = (button: ButtonCode) => {
   return button === "AC";
 };
 
@@ -137,7 +152,7 @@ const handleAllClearButton = (): State => {
     isNextClear: false,
   };
 };
-const isEqualButton = (button: string) => {
+const isEqualButton = (button: ButtonCode) => {
   return button === "=";
 };
 const handleEqualButton = (state: State): State => {

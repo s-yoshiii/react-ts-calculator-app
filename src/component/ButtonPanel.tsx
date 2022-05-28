@@ -7,11 +7,19 @@ const ButtonPanel: FC<Props> = (props) => {
   const { buttonHandler } = props;
   return (
     <div className="buttonPanel">
+      <button className="button button--ac" onClick={() => buttonHandler("AC")}>
+        AC
+      </button>
+      <button className="button" onClick={() => buttonHandler("D")}>
+        D
+      </button>
+      <button className="button">%</button>
+      <button className="button">&divide;</button>
       <button
         className="button button--number"
-        onClick={() => buttonHandler("9")}
+        onClick={() => buttonHandler("7")}
       >
-        9
+        7
       </button>
       <button
         className="button button--number"
@@ -21,15 +29,16 @@ const ButtonPanel: FC<Props> = (props) => {
       </button>
       <button
         className="button button--number"
-        onClick={() => buttonHandler("7")}
+        onClick={() => buttonHandler("9")}
       >
-        7
+        9
       </button>
+      <button className="button">&times;</button>
       <button
         className="button button--number"
-        onClick={() => buttonHandler("6")}
+        onClick={() => buttonHandler("4")}
       >
-        6
+        4
       </button>
       <button
         className="button button--number"
@@ -39,15 +48,18 @@ const ButtonPanel: FC<Props> = (props) => {
       </button>
       <button
         className="button button--number"
-        onClick={() => buttonHandler("4")}
+        onClick={() => buttonHandler("6")}
       >
-        4
+        6
+      </button>
+      <button className="button" onClick={() => buttonHandler("-")}>
+        -
       </button>
       <button
         className="button button--number"
-        onClick={() => buttonHandler("3")}
+        onClick={() => buttonHandler("1")}
       >
-        3
+        1
       </button>
       <button
         className="button button--number"
@@ -57,9 +69,12 @@ const ButtonPanel: FC<Props> = (props) => {
       </button>
       <button
         className="button button--number"
-        onClick={() => buttonHandler("1")}
+        onClick={() => buttonHandler("3")}
       >
-        1
+        3
+      </button>
+      <button className="button" onClick={() => buttonHandler("+")}>
+        +
       </button>
       <button
         className="button button--number"
@@ -70,18 +85,7 @@ const ButtonPanel: FC<Props> = (props) => {
       <button className="button button--dot" onClick={() => buttonHandler(".")}>
         .
       </button>
-      <button className="button button--ac" onClick={() => buttonHandler("AC")}>
-        AC
-      </button>
-      <button className="button" onClick={() => buttonHandler("D")}>
-        D
-      </button>
-      <button className="button" onClick={() => buttonHandler("+")}>
-        +
-      </button>
-      <button className="button" onClick={() => buttonHandler("-")}>
-        -
-      </button>
+
       <button className="button" onClick={() => buttonHandler("=")}>
         =
       </button>

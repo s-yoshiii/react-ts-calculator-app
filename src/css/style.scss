@@ -20,15 +20,30 @@
 }
 .buttonPanel {
   display: grid;
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: repeat(5, 80px);
+  gap: 10px;
 }
 .button {
   font-size: 20px;
-  width: 60px;
-  height: 60px;
-  background: global.$button-color;
+  width: 80px;
+  height: 80px;
+  background: global.$button-primary-color;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #000;
+  &--dark {
+    background: global.$button-dark-color;
+    color: #fff;
+  }
+  &--green {
+    background: global.$button-green-color;
+  }
+  &--large {
+    width: 160px;
+    height: 80px;
+    border-radius: 80px;
+  }
 }

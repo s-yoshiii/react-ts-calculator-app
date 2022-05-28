@@ -7,14 +7,20 @@ const ButtonPanel: FC<Props> = (props) => {
   const { buttonHandler } = props;
   return (
     <div className="buttonPanel">
-      <button className="button button--ac" onClick={() => buttonHandler("AC")}>
+      <button
+        className="button button--dark button--ac"
+        onClick={() => buttonHandler("AC")}
+      >
         AC
       </button>
-      <button className="button" onClick={() => buttonHandler("D")}>
+      <button
+        className="button button--dark"
+        onClick={() => buttonHandler("D")}
+      >
         D
       </button>
-      <button className="button">%</button>
-      <button className="button">&divide;</button>
+      <button className="button button--dark">%</button>
+      <button className="button button--green">&divide;</button>
       <button
         className="button button--number"
         onClick={() => buttonHandler("7")}
@@ -33,7 +39,7 @@ const ButtonPanel: FC<Props> = (props) => {
       >
         9
       </button>
-      <button className="button">&times;</button>
+      <button className="button button--green">&times;</button>
       <button
         className="button button--number"
         onClick={() => buttonHandler("4")}
@@ -52,7 +58,10 @@ const ButtonPanel: FC<Props> = (props) => {
       >
         6
       </button>
-      <button className="button" onClick={() => buttonHandler("-")}>
+      <button
+        className="button button--green"
+        onClick={() => buttonHandler("-")}
+      >
         -
       </button>
       <button
@@ -73,11 +82,14 @@ const ButtonPanel: FC<Props> = (props) => {
       >
         3
       </button>
-      <button className="button" onClick={() => buttonHandler("+")}>
+      <button
+        className="button button--green"
+        onClick={() => buttonHandler("+")}
+      >
         +
       </button>
       <button
-        className="button button--number"
+        className="button button--large button--number"
         onClick={() => buttonHandler("0")}
       >
         0
@@ -86,7 +98,10 @@ const ButtonPanel: FC<Props> = (props) => {
         .
       </button>
 
-      <button className="button" onClick={() => buttonHandler("=")}>
+      <button
+        className="button button--green"
+        onClick={() => buttonHandler("=")}
+      >
         =
       </button>
     </div>

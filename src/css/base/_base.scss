@@ -1,4 +1,5 @@
 @use "../global/" as global;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 html {
   font-size: 62.5%;
 }
@@ -15,14 +16,14 @@ body {
 }
 body {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: #000;
   background-color: #fff;
   position: relative;
   line-height: 1.2;
   min-height: 100vh;
   height: auto;
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+  font-family: "Open Sans", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
   word-break: break-all;
   -webkit-text-orientation: sideways;

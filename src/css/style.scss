@@ -3,20 +3,31 @@
 .content {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   background: global.$primary-color;
   min-width: 100%;
   min-height: 100vh;
   color: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
   &__inner {
     max-width: 500px;
   }
 }
 .display {
-  width: 200px;
-  font-size: 44px;
+  font-size: 64px;
   background: global.$display-color;
   color: #000;
+  color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: right;
+  font-weight: 300;
+  margin-bottom: 20px;
+  min-height: calc(100vh - 540px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 .buttonPanel {
   display: grid;
@@ -42,8 +53,9 @@
     background: global.$button-green-color;
   }
   &--large {
-    width: 160px;
+    width: 170px;
     height: 80px;
     border-radius: 80px;
+    grid-column: span 2;
   }
 }

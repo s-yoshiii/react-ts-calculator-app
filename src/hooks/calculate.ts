@@ -1,4 +1,4 @@
-export type Operator = "+" | "-";
+export type Operator = "+" | "-" | "*" | "/";
 export type NumberCode =
   | "0"
   | "1"
@@ -85,7 +85,7 @@ const handleNumberButton = (button: ButtonCode, state: State): State => {
   };
 };
 const isOperatorButton = (button: ButtonCode): button is Operator => {
-  return button === "+" || button === "-";
+  return button === "+" || button === "-" || button === "*" || button === "/";
 };
 
 const handleOperatorButton = (button: ButtonCode, state: State): State => {
@@ -174,6 +174,12 @@ const operate = (state: State): number => {
   }
   if (state.operator === "-") {
     return state.operand - current;
+  }
+  if (state.operator === "*") {
+    return state.operand * current;
+  }
+  if (state.operator === "/") {
+    return state.operand / current;
   }
   return current;
 };

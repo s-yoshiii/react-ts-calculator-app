@@ -20,7 +20,12 @@ const ButtonPanel: FC<Props> = (props) => {
         D
       </button>
       <button className="button button--dark">%</button>
-      <button className="button button--green">&divide;</button>
+      <button
+        className="button button--green"
+        onClick={() => buttonHandler("/")}
+      >
+        &divide;
+      </button>
       <button
         className="button button--number"
         onClick={() => buttonHandler("7")}
@@ -39,7 +44,12 @@ const ButtonPanel: FC<Props> = (props) => {
       >
         9
       </button>
-      <button className="button button--green">&times;</button>
+      <button
+        className="button button--green"
+        onClick={() => buttonHandler("*")}
+      >
+        &times;
+      </button>
       <button
         className="button button--number"
         onClick={() => buttonHandler("4")}

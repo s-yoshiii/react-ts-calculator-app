@@ -4,8 +4,7 @@ type Props = {
 };
 const Display: FC<Props> = (props) => {
   const { value } = props;
-  const displayValue = parseFloat(value).toLocaleString();
-  return <div className="display">{displayValue}</div>;
+  return <div className="display">{parseFloat(value).toLocaleString()}</div>;
 };
 
 export default Display;

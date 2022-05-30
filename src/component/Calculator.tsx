@@ -14,6 +14,14 @@ const Calculator = () => {
     const nextState = calculate(code, state);
     setState(nextState);
   };
+  const keydown = (e: KeyboardEvent): void => {
+    console.log(e.key);
+    const button = e.key as ButtonCode;
+    const nextState = calculate(button, state);
+    setState(nextState);
+  };
+  document.addEventListener("keydown", keydown);
+  //  return () => document.removeEventListener("keydown", handleKeyDown);
   return (
     <>
       <Display value={state.current} />

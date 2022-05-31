@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonCode, calculate, State } from "../hooks/calculate";
 import ButtonPanel from "./ButtonPanel";
 import Display from "./Display";
@@ -14,14 +14,18 @@ const Calculator = () => {
     const nextState = calculate(code, state);
     setState(nextState);
   };
-  const keydown = (e: KeyboardEvent): void => {
-    console.log(e.key);
-    const button = e.key as ButtonCode;
-    const nextState = calculate(button, state);
-    setState(nextState);
-  };
-  document.addEventListener("keydown", keydown);
-  //  return () => document.removeEventListener("keydown", handleKeyDown);
+  useEffect(() => {
+    const handleKeydown = (e: KeyboardEvent): void => {
+      const button = e.key as ButtonCode;
+      let nextState = calculate(button, state);
+      if (e.key === "Enter") {
+        nextState = calculate("=", state);
+      }
+      setState(nextState);
+    };
+    document.addEventListener("keydown", handleKeydown);
+    return () => document.removeEventListener("keydown", handleKeydown);
+  }, [state]);
   return (
     <>
       <Display value={state.current} />

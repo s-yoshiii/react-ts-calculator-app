@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { ButtonCode, calculate, State } from "../hooks/calculate";
+import {
+  ButtonCode,
+  calculate,
+  handleKeydown,
+  State,
+} from "../hooks/calculate";
 import ButtonPanel from "./ButtonPanel";
 import Display from "./Display";
 
@@ -15,14 +20,6 @@ const Calculator = () => {
     setState(nextState);
   };
   useEffect(() => {
-    const handleKeydown = (e: KeyboardEvent): void => {
-      const button = e.key as ButtonCode;
-      let nextState = calculate(button, state);
-      if (e.key === "Enter") {
-        nextState = calculate("=", state);
-      }
-      setState(nextState);
-    };
     document.addEventListener("keydown", handleKeydown);
     return () => document.removeEventListener("keydown", handleKeydown);
   }, [state]);

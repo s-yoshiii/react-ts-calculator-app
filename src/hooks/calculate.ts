@@ -183,3 +183,46 @@ const operate = (state: State): number => {
   }
   return current;
 };
+export const keyDownCodes = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  ".",
+  "Enter",
+  "Backspace",
+  "Delete",
+  "+",
+  "-",
+  "*",
+  "/",
+  "%",
+];
+export const handleKeydown = (e: KeyboardEvent) => {
+  let key: string = e.key;
+  const isKeyCode = keyDownCodes.find((keyDownCode) => {
+    return keyDownCode === key;
+  });
+  if (isKeyCode === undefined) {
+    return;
+  }
+  switch (key) {
+    case "Enter":
+      key = "=";
+      break;
+    case "Backspace":
+      key = "D";
+      break;
+    case "Delete":
+      key = "AC";
+      break;
+    default:
+  }
+  console.log(key);
+  return key;
+};

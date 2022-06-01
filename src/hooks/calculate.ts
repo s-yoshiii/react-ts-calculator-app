@@ -203,26 +203,3 @@ export const keyDownCodes = [
   "/",
   "%",
 ];
-export const handleKeydown = (e: KeyboardEvent) => {
-  let key: string = e.key;
-  const isKeyCode = keyDownCodes.find((keyDownCode) => {
-    return keyDownCode === key;
-  });
-  if (isKeyCode === undefined) {
-    return;
-  }
-  switch (key) {
-    case "Enter":
-      key = "=";
-      break;
-    case "Backspace":
-      key = "D";
-      break;
-    case "Delete":
-      key = "AC";
-      break;
-    default:
-  }
-  console.log(key);
-  return key;
-};

@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  ButtonCode,
-  calculate,
-  handleKeydown,
-  State,
-} from "../hooks/calculate";
+import React, { useCallback, useEffect, useState } from "react";
+import { ButtonCode, calculate, keyDownCodes, State } from "../hooks/calculate";
 import ButtonPanel from "./ButtonPanel";
 import Display from "./Display";
 
@@ -19,10 +14,41 @@ const Calculator = () => {
     const nextState = calculate(code, state);
     setState(nextState);
   };
+
+  const handleKeydown = useCallback(
+    (e: KeyboardEvent) => {
+      let key = e.key;
+      const isKeyCode = keyDownCodes.find((keyDownCode) => {
+        return keyDownCode === key;
+      });
+      if (isKeyCode === undefined) {
+        return;
+      }
+      const convertButton = () => {
+        switch (key) {
+          case "Enter":
+            key = "=";
+            break;
+          case "Backspace":
+            key = "D";
+            break;
+          case "Delete":
+            key = "AC";
+            break;
+          default:
+        }
+        return key as ButtonCode;
+      };
+      const nextState = calculate(convertButton(), state);
+      setState(nextState);
+    },
+    [state]
+  );
+
   useEffect(() => {
     document.addEventListener("keydown", handleKeydown);
     return () => document.removeEventListener("keydown", handleKeydown);
-  }, [state]);
+  }, [handleKeydown, state]);
   return (
     <>
       <Display value={state.current} />

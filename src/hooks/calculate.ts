@@ -89,13 +89,7 @@ const handleNumberButton = (button: ButtonCode, state: State): State => {
   };
 };
 const isOperatorButton = (button: ButtonCode): button is Operator => {
-  return (
-    button === "+" ||
-    button === "-" ||
-    button === "*" ||
-    button === "/" ||
-    button === "%"
-  );
+  return button === "+" || button === "-" || button === "*" || button === "/";
 };
 
 const handleOperatorButton = (button: ButtonCode, state: State): State => {
@@ -137,9 +131,30 @@ const isPercentButton = (button: string) => {
   return button === "%";
 };
 const handlePercentButton = (button: ButtonCode, state: State) => {
-  throw new Error("Function not implemented.");
+  const nextValue = percentage(state);
+  return {
+    current: `${nextValue}`,
+    operand: nextValue,
+    operator: null,
+    isNextClear: true,
+  };
 };
-
+const percentage = (state: State) => {
+  const current = parseFloat(state.current);
+  if (state.operator === "+") {
+    return state.operand * (1 + current * 0.01);
+  }
+  if (state.operator === "-") {
+    return state.operand * (1 - current * 0.01);
+  }
+  if (state.operator === "*") {
+    return state.operand * current * 0.01;
+  }
+  if (state.operator === "/") {
+    return state.operand / (current * 0.01);
+  }
+  return current;
+};
 const handleDeleteButton = (button: ButtonCode, state: State): State => {
   if (state.current.length === 1) {
     return {

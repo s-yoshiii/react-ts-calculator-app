@@ -49,6 +49,7 @@ const Calculator = () => {
     document.addEventListener("keydown", handleKeydown);
     return () => document.removeEventListener("keydown", handleKeydown);
   }, [handleKeydown, state]);
+  console.log(state);
   return (
     <>
       <Display value={state.current} />

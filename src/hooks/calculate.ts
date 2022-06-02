@@ -10,7 +10,7 @@ export type NumberCode =
   | "7"
   | "8"
   | "9";
-export type ButtonCode = NumberCode | Operator | "." | "D" | "AC" | "=";
+export type ButtonCode = NumberCode | Operator | "." | "D" | "AC" | "=" | "%";
 export interface State {
   current: string;
   operand: number;
@@ -30,6 +30,10 @@ export const calculate = (button: ButtonCode, state: State): State => {
   //.の場合
   if (isDotButton(button)) {
     return handleDotButton(button, state);
+  }
+  //%の場合
+  if (isPercentButton(button)) {
+    return handlePercentButton(button, state);
   }
   //削除の場合
   if (isDeleteButton(button)) {
@@ -85,7 +89,13 @@ const handleNumberButton = (button: ButtonCode, state: State): State => {
   };
 };
 const isOperatorButton = (button: ButtonCode): button is Operator => {
-  return button === "+" || button === "-" || button === "*" || button === "/";
+  return (
+    button === "+" ||
+    button === "-" ||
+    button === "*" ||
+    button === "/" ||
+    button === "%"
+  );
 };
 
 const handleOperatorButton = (button: ButtonCode, state: State): State => {
@@ -122,6 +132,12 @@ const handleDotButton = (button: ButtonCode, state: State): State => {
 };
 const isDeleteButton = (button: ButtonCode) => {
   return button === "D";
+};
+const isPercentButton = (button: string) => {
+  return button === "%";
+};
+const handlePercentButton = (button: ButtonCode, state: State) => {
+  throw new Error("Function not implemented.");
 };
 
 const handleDeleteButton = (button: ButtonCode, state: State): State => {

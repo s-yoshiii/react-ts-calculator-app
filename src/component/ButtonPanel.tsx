@@ -19,7 +19,12 @@ const ButtonPanel: FC<Props> = (props) => {
       >
         D
       </button>
-      <button className="button button--dark">%</button>
+      <button
+        className="button button--dark"
+        onClick={() => buttonHandler("%")}
+      >
+        %
+      </button>
       <button
         className="button button--green"
         onClick={() => buttonHandler("/")}

@@ -28,6 +28,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  max-width: 350px;
+  letter-spacing: -0.04em;
 }
 .buttonPanel {
   display: grid;
@@ -36,7 +38,7 @@
   gap: 10px;
 }
 .button {
-  font-size: 20px;
+  font-size: 36px;
   width: 80px;
   height: 80px;
   background: global.$button-primary-color;
@@ -57,5 +59,7 @@
     height: 80px;
     border-radius: 80px;
     grid-column: span 2;
+    padding: 0 30px;
+    justify-content: flex-start;
   }
 }

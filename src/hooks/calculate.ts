@@ -214,7 +214,7 @@ const operate = (state: State): number => {
   }
   return current;
 };
-export const keyDownCodes = [
+export const keyDownCodes: string[] = [
   "1",
   "2",
   "3",

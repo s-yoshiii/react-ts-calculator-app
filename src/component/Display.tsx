@@ -4,7 +4,24 @@ type Props = {
 };
 const Display: FC<Props> = (props) => {
   const { value } = props;
-  return <div className="display">{parseFloat(value).toLocaleString()}</div>;
+  const valLength = value.length;
+  return (
+    <div
+      className={`display${
+        valLength > 16
+          ? " display--large"
+          : valLength > 13
+          ? " display--xxlarge"
+          : valLength > 12
+          ? " display--xlarge"
+          : valLength > 9
+          ? " display--large"
+          : ""
+      }`}
+    >
+      {valLength > 16 ? "TOO LARGE" : parseFloat(value).toLocaleString()}
+    </div>
+  );
 };
 
 export default Display;

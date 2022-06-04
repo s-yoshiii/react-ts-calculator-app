@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ButtonCode, calculate, keyDownCodes, State } from "../hooks/calculate";
 import ButtonPanel from "./ButtonPanel";
 import Display from "./Display";
@@ -49,7 +49,6 @@ const Calculator = () => {
     document.addEventListener("keydown", handleKeydown);
     return () => document.removeEventListener("keydown", handleKeydown);
   }, [handleKeydown, state]);
-  console.log(state);
   return (
     <>
       <Display value={state.current} />

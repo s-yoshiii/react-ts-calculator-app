@@ -15,7 +15,7 @@
   }
 }
 .display {
-  font-size: 64px;
+  font-size: 60px;
   background: global.$display-color;
   color: #000;
   color: #fff;
@@ -30,6 +30,15 @@
   align-items: flex-end;
   max-width: 350px;
   letter-spacing: -0.04em;
+  &--large {
+    font-size: 44px;
+  }
+  &--xlarge {
+    font-size: 38px;
+  }
+  &--xxlarge {
+    font-size: 33px;
+  }
 }
 .buttonPanel {
   display: grid;
